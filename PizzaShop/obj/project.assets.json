@@ -3290,7 +3290,7 @@
           "lib/netstandard1.3/SshNet.Security.Cryptography.dll": {}
         }
       },
-      "Stripe.net/27.25.1": {
+      "Stripe.net/32.1.2": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "9.0.1",
@@ -8932,10 +8932,10 @@
         "sshnet.security.cryptography.nuspec"
       ]
     },
-    "Stripe.net/27.25.1": {
-      "sha512": "WLbx4qNEKsY2q9YZ48iPefSrFdq7mTLY/EUPb+SV6j64GzWzAbR1Q8ovmVuItqbUthNEGP3ahVy3q4W9j2wvcA==",
+    "Stripe.net/32.1.2": {
+      "sha512": "Cs7dqFYLODLtiqpncuziiyYIo34mCa3EWxMQpXBKe1gGDdONme/IDbJ3pVdxa1RWZLS8PRP2fMf40DB0D9sJew==",
       "type": "package",
-      "path": "stripe.net/27.25.1",
+      "path": "stripe.net/32.1.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -8948,7 +8948,7 @@
         "lib/netstandard2.0/Stripe.net.dll",
         "lib/netstandard2.0/Stripe.net.pdb",
         "lib/netstandard2.0/Stripe.net.xml",
-        "stripe.net.27.25.1.nupkg.sha512",
+        "stripe.net.32.1.2.nupkg.sha512",
         "stripe.net.nuspec"
       ]
     },
@@ -13831,7 +13831,7 @@
       "MySql.Data.EntityFrameworkCore >= 8.0.18",
       "Pomelo.EntityFrameworkCore.MySql >= 2.2.0",
       "Pomelo.EntityFrameworkCore.MySql.Design >= 1.1.2",
-      "Stripe.net >= 27.25.1"
+      "Stripe.net >= 32.1.2"
     ]
   },
   "packageFolders": {
@@ -13841,11 +13841,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\troyf\\Documents\\Projects\\PizzaShop\\PizzaShop\\PizzaShop.csproj",
+      "projectUniqueName": "C:\\Users\\troyf\\Desktop\\pizza-shop-lab\\PizzaShop\\PizzaShop.csproj",
       "projectName": "PizzaShop",
-      "projectPath": "C:\\Users\\troyf\\Documents\\Projects\\PizzaShop\\PizzaShop\\PizzaShop.csproj",
+      "projectPath": "C:\\Users\\troyf\\Desktop\\pizza-shop-lab\\PizzaShop\\PizzaShop.csproj",
       "packagesPath": "C:\\Users\\troyf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\troyf\\Documents\\Projects\\PizzaShop\\PizzaShop\\obj\\",
+      "outputPath": "C:\\Users\\troyf\\Desktop\\pizza-shop-lab\\PizzaShop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13914,7 +13914,7 @@
           },
           "Stripe.net": {
             "target": "Package",
-            "version": "[27.25.1, )"
+            "version": "[32.1.2, )"
           }
         },
         "imports": [

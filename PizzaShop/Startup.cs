@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MySql.Data.EntityFrameworkCore.Extensions;
 using PizzaShop.Data;
 using PizzaShop.Data.Interfaces;
+using Stripe;
 
 namespace PizzaShop
 {
@@ -59,6 +60,8 @@ namespace PizzaShop
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            StripeConfiguration.ApiKey = "sk_test_pZ87WSZ0hqjVmZldAZk9E7yR009yaLc9cm";
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

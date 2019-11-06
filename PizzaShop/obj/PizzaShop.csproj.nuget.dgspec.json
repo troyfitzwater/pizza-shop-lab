@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\troyf\\Documents\\Projects\\PizzaShop\\PizzaShop\\PizzaShop.csproj": {}
+    "C:\\Users\\troyf\\Desktop\\pizza-shop-lab\\PizzaShop\\PizzaShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\troyf\\Documents\\Projects\\PizzaShop\\PizzaShop\\PizzaShop.csproj": {
+    "C:\\Users\\troyf\\Desktop\\pizza-shop-lab\\PizzaShop\\PizzaShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\troyf\\Documents\\Projects\\PizzaShop\\PizzaShop\\PizzaShop.csproj",
+        "projectUniqueName": "C:\\Users\\troyf\\Desktop\\pizza-shop-lab\\PizzaShop\\PizzaShop.csproj",
         "projectName": "PizzaShop",
-        "projectPath": "C:\\Users\\troyf\\Documents\\Projects\\PizzaShop\\PizzaShop\\PizzaShop.csproj",
+        "projectPath": "C:\\Users\\troyf\\Desktop\\pizza-shop-lab\\PizzaShop\\PizzaShop.csproj",
         "packagesPath": "C:\\Users\\troyf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\troyf\\Documents\\Projects\\PizzaShop\\PizzaShop\\obj\\",
+        "outputPath": "C:\\Users\\troyf\\Desktop\\pizza-shop-lab\\PizzaShop\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -80,7 +80,7 @@
             },
             "Stripe.net": {
               "target": "Package",
-              "version": "[27.25.1, )"
+              "version": "[32.1.2, )"
             }
           },
           "imports": [

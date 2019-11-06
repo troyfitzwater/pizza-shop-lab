@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PizzaShop.Core;
 using PizzaShop.Data;
+using Stripe;
 
 namespace PizzaShop.Pages.Order
 {
@@ -41,7 +42,35 @@ namespace PizzaShop.Pages.Order
 
             // Stripe create charge & customer
 
-            return RedirectToPage("../Index");
+            var shippingOptions = new ChargeShippingOptions
+            {
+                Name = "Troy Test Pizza",
+                Address = new AddressOptions()
+                {
+                    Line1 = "line1",
+                    City = "Bath",
+                    State = "NY",
+                    PostalCode = "14810"
+                }
+            };
+
+            var chargeOptions = new ChargeCreateOptions
+            {
+                Amount = pizzaOrder.Cost,
+                Currency = "usd",
+                Description = "Example charge",
+                Source = "tok_visa",
+                Shipping = shippingOptions
+            };
+
+            //var customerService = new CustomerService();
+            //customerService.Create(customerOptions);
+
+            var service = new ChargeService();
+            TempData["OrderInfoName"] = shippingOptions.Address.Line1;
+            Charge charge = service.Create(chargeOptions);
+
+            return RedirectToPage("./OrderConfirmation");
         }
     }
 }

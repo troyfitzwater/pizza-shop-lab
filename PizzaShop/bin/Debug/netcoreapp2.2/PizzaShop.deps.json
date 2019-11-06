@@ -32,7 +32,7 @@
           "MySql.Data.EntityFrameworkCore": "8.0.18",
           "Pomelo.EntityFrameworkCore.MySql": "2.2.0",
           "Pomelo.EntityFrameworkCore.MySql.Design": "1.1.2",
-          "Stripe.net": "27.25.1"
+          "Stripe.net": "32.1.2"
         },
         "runtime": {
           "PizzaShop.dll": {}
@@ -460,15 +460,15 @@
           "lib/netstandard1.3/SshNet.Security.Cryptography.dll": {}
         }
       },
-      "Stripe.net/27.25.1": {
+      "Stripe.net/32.1.2": {
         "dependencies": {
           "Newtonsoft.Json": "11.0.2",
           "System.Configuration.ConfigurationManager": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/Stripe.net.dll": {
-            "assemblyVersion": "27.25.1.0",
-            "fileVersion": "27.25.1.0"
+            "assemblyVersion": "32.1.2.0",
+            "fileVersion": "32.1.2.0"
           }
         },
         "compile": {
@@ -4074,12 +4074,12 @@
       "path": "sshnet.security.cryptography/1.2.0",
       "hashPath": "sshnet.security.cryptography.1.2.0.nupkg.sha512"
     },
-    "Stripe.net/27.25.1": {
+    "Stripe.net/32.1.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WLbx4qNEKsY2q9YZ48iPefSrFdq7mTLY/EUPb+SV6j64GzWzAbR1Q8ovmVuItqbUthNEGP3ahVy3q4W9j2wvcA==",
-      "path": "stripe.net/27.25.1",
-      "hashPath": "stripe.net.27.25.1.nupkg.sha512"
+      "sha512": "sha512-Cs7dqFYLODLtiqpncuziiyYIo34mCa3EWxMQpXBKe1gGDdONme/IDbJ3pVdxa1RWZLS8PRP2fMf40DB0D9sJew==",
+      "path": "stripe.net/32.1.2",
+      "hashPath": "stripe.net.32.1.2.nupkg.sha512"
     },
     "System.Collections.Immutable/1.5.0": {
       "type": "package",
