@@ -1,0 +1,8 @@
+C:\Users\troyf\Documents\Projects\PizzaShop\PizzaShop.Core\bin\Debug\netcoreapp3.0\PizzaShop.Core.deps.json
+C:\Users\troyf\Documents\Projects\PizzaShop\PizzaShop.Core\bin\Debug\netcoreapp3.0\PizzaShop.Core.dll
+C:\Users\troyf\Documents\Projects\PizzaShop\PizzaShop.Core\bin\Debug\netcoreapp3.0\PizzaShop.Core.pdb
+C:\Users\troyf\Documents\Projects\PizzaShop\PizzaShop.Core\obj\Debug\netcoreapp3.0\PizzaShop.Core.csprojAssemblyReference.cache
+C:\Users\troyf\Documents\Projects\PizzaShop\PizzaShop.Core\obj\Debug\netcoreapp3.0\PizzaShop.Core.AssemblyInfoInputs.cache
+C:\Users\troyf\Documents\Projects\PizzaShop\PizzaShop.Core\obj\Debug\netcoreapp3.0\PizzaShop.Core.AssemblyInfo.cs
+C:\Users\troyf\Documents\Projects\PizzaShop\PizzaShop.Core\obj\Debug\netcoreapp3.0\PizzaShop.Core.dll
+C:\Users\troyf\Documents\Projects\PizzaShop\PizzaShop.Core\obj\Debug\netcoreapp3.0\PizzaShop.Core.pdb

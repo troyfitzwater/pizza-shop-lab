@@ -1,0 +1,38 @@
+﻿@page
+@model PizzaShop.Pages.Admin.OrdersModel
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<h1>Orders</h1>
+<br />
+<h2>Incomplete</h2>
+<hr />
+@foreach (var order in Model.PizzaOrders.Where(order => order.IsComplete == false))
+{
+    <div class="card order-card order-card-incomplete">
+        <div class="card-body">
+            <h4>Order: #@order.Id</h4>
+            <p>Size: @order.Size</p>
+            <p>Toppings: @order.Toppings</p>
+            <p>Quantity: @order.Quantity</p>
+        </div>
+        <form method="post">
+            <button class="btn btn-success" type="submit" asp-page="./Orders" asp-route-orderId="@order.Id">Mark Complete</button>
+        </form>
+    </div>
+}
+<br /><br />
+<h2>Completed</h2>
+<hr />
+@foreach (var order in Model.PizzaOrders.Where(order => order.IsComplete == true))
+{
+    <div class="card order-card order-card-complete">
+        <div class="card-body">
+            <h4>Order: #@order.Id</h4>
+            <p>Size: @order.Size</p>
+            <p>Toppings: @order.Toppings</p>
+            <p>Quantity: @order.Quantity</p>
+        </div>
+    </div>
+}

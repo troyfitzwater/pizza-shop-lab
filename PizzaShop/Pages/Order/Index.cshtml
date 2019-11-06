@@ -1,0 +1,123 @@
+﻿@page
+@model PizzaShop.Pages.Order.IndexModel
+@{
+    ViewData["Title"] = "Order a Pizza";
+}
+
+<div id="app">
+    <section>
+        <h1><strong>Create Your Pizza</strong></h1>
+        <br />
+        <div class="row">
+            <div class="col-sm">
+                <img class="img-fluid" :src="selectedSizeImage" />
+                <br />
+                <h2><strong>Total: {{ calculateTotalCost }}</strong></h2>
+                <p>Selected Size: {{ selectedSize }}</p>
+                <p>Selected Toppings: {{ getToppings }}</p>
+            </div>
+
+            <div class="col-sm">
+                <form method="post" id="payment-form">
+                    <section id="pizzaBuilderView" v-show="!isDisplayingCheckout">
+                        <div asp-validation-summary="ModelOnly" class="has-text-danger"></div>
+                        <h3>Size</h3>
+                        <select v-on:change="changeSelectedSize($event)" asp-for="pizzaOrder.Size">
+                            <option disabled selected>Select a Size</option>
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                        </select>
+                        <br />
+                        <span style="color: red;" asp-validation-for="pizzaOrder.Size"></span>
+                        <hr />
+
+                        <h4>Toppings</h4>
+                        <!--TODO: find a way to for loop toppings without vue; using vue will result in creating an array of objects-->
+                        <ul>
+                            <li>
+                                <label for="Pepperoni">Pepperoni</label>
+                                <input name="Pepperoni" type="checkbox" value="Pepperoni" v-model="selectedToppings" />
+                            </li>
+                            <li>
+                                <label for="Sausage">Sausage</label>
+                                <input type="checkbox" value="Sausage" v-model="selectedToppings" />
+                            </li>
+                            <li>
+                                <label for="Bacon">Bacon</label>
+                                <input type="checkbox" value="Bacon" v-model="selectedToppings" />
+                            </li>
+                            <li>
+                                <label for="Bell Pepper">Bell Pepper</label>
+                                <input type="checkbox" value="Bell Pepper" v-model="selectedToppings" />
+                            </li>
+                            <li>
+                                <label for="Onion">Onion</label>
+                                <input type="checkbox" value="Onion" v-model="selectedToppings" />
+                            </li>
+                            <li>
+                                <label for="Mushroom">Mushroom</label>
+                                <input type="checkbox" value="Mushroom" v-model="selectedToppings" />
+                            </li>
+                            <li>
+                                <label for="Olives">Olives</label>
+                                <input type="checkbox" value="Olives" v-model="selectedToppings" />
+                            </li>
+                            <li>
+                                <label for="Anchovies">Anchovies</label>
+                                <input type="checkbox" value="Anchovies" v-model="selectedToppings" />
+                            </li>
+                            <li>
+                                <label for="Pineapple">Pineapple</label>
+                                <input type="checkbox" value="Pineapple" v-model="selectedToppings" />
+                            </li>
+                            <li>
+                                <label for="Woo">Woo</label>
+                                <input type="checkbox" value="Woo" v-model="selectedToppings" />
+                            </li>
+                        </ul>
+                        <hr />
+                        <h4>Quantity</h4>
+                        <select v-model="selectedQuantity" asp-for="pizzaOrder.Quantity">
+                            <option selected v-bind:value="1">1</option>
+                            <option v-bind:value="2">2</option>
+                            <option v-bind:value="3">3</option>
+                        </select>
+                        <span style="color: red;" asp-validation-for="pizzaOrder.Quantity"></span>
+                        <hr />
+                        <br />
+
+                        <p>Is this for delivery?</p>
+                        <select asp-for="pizzaOrder.IsDelivery">
+                            <option selected value="false">No</option>
+                            <option value="true">Yes</option>
+                        </select>
+
+                        <input type="hidden" asp-for="pizzaOrder.Toppings" :value="getToppings" />
+                        <input type="hidden" asp-for="pizzaOrder.Cost" :value="calculateTotalCost" />
+                        <br /><br />
+                        <button class="btn btn-info" v-on:click="isDisplayingCheckout = true">Continue to Checkout</button>
+                    </section>
+
+                    <!--Checkout View-->
+                    <section v-show="isDisplayingCheckout">
+                        <a href="#" v-on:click="isDisplayingCheckout = false"><p>< Back to Pizza Builder</p></a>
+                        <label for="card-element">
+                            Credit or debit card
+                        </label>
+                        <div id="card-element">
+                            <!-- A Stripe Element will be inserted here. -->
+                        </div>
+                        <div id="card-errors" style="color: red;">
+                            <!-- Used to display form errors. -->
+                        </div>
+                        <input type="hidden" name="pizzaTotalCost" :value="pizzaTotalCost" />
+                        <br>
+                        <button class="btn btn-success">Place Order</button>
+                    </section>
+
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
