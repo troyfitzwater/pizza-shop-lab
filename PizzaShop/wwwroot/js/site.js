@@ -9,20 +9,21 @@ const vm = new Vue({
         selectedToppings: [],
         stringToppings: "",
         pizzaSizeCost: 0,
-        pizzaTotalCost: 0,
+        isDelivery: false
     },
     computed: {
         // dynamically change the display for the total cost of the pizza
-        // whenever changes are made to either pizzaSizeCost or pizzaTotalCost
-        calculateTotalCost () {
-            return (this.pizzaSizeCost + this.getToppingsCost) * this.selectedQuantity;
+        calculateTotalCost() {
+            if (this.isDelivery == false) {
+                return this.pizzaSizeCost * this.selectedQuantity;
+            } else {
+                return (this.pizzaSizeCost * this.selectedQuantity) + 100;
+            }
+            
         },
         getToppings () {
             stringToppings = this.selectedToppings.toString();
             return this.selectedToppings.toString();
-        },
-        getToppingsCost () {
-            return this.selectedToppings.length * 10;
         }
     },
     mounted: () => {
@@ -94,24 +95,29 @@ const vm = new Vue({
             form.submit();
         }
     },
+    filters: {
+        currency(value) {
+            return "$" + value / 100;
+        }
+    },
     methods: {
-        // change the value of pizzaTotalCost based on the selected option in the 
+        // change the value of pizzaSizeCost based on the selected option in the 
         // pizzaSize select tag
         changeSelectedSize: function (event) {
             // assign selectedSize based on the selected option 
             this.selectedSize = event.target.value;
             switch (event.target.value) {
                 case "small":
-                    this.pizzaSizeCost = 11;
-                    this.selectedSizeImage = "images/small.jpg"
+                    this.pizzaSizeCost = 745;
+                    this.selectedSizeImage = "images/small.png"
                     break;
                 case "medium":
-                    this.pizzaSizeCost = 38;
-                    this.selectedSizeImage = "images/medium.jpg"
+                    this.pizzaSizeCost = 1045;
+                    this.selectedSizeImage = "images/medium.png"
                     break;
                 case "large":
-                    this.pizzaSizeCost = 98;
-                    this.selectedSizeImage = "images/large.jpg"
+                    this.pizzaSizeCost = 1345;
+                    this.selectedSizeImage = "images/large.png"
                     break;
                 default:
                     pizzaSizeCost = 0

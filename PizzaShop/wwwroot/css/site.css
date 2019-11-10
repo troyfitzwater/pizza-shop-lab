@@ -63,3 +63,7 @@ body {
 .order-card-incomplete {
     background: lightpink;
 }
+
+.navbar-inverse {
+    background-color: #F84C50 !important;
+}

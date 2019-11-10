@@ -16,6 +16,8 @@ namespace PizzaShop.Pages.Order
 
         [BindProperty]
         public PizzaOrder pizzaOrder { get; set; }
+        [BindProperty]
+        public ShippingAddress shippingAddress { get; set; }
 
         public IndexModel(PizzaShopContext context)
         {
@@ -40,34 +42,49 @@ namespace PizzaShop.Pages.Order
             _context.PizzaOrders.Add(pizzaOrder);
             await _context.SaveChangesAsync();
 
-            // Stripe create charge & customer
-
-            var shippingOptions = new ChargeShippingOptions
-            {
-                Name = "Troy Test Pizza",
-                Address = new AddressOptions()
-                {
-                    Line1 = "line1",
-                    City = "Bath",
-                    State = "NY",
-                    PostalCode = "14810"
-                }
-            };
-
+            // Stripe create charge
             var chargeOptions = new ChargeCreateOptions
             {
                 Amount = pizzaOrder.Cost,
                 Currency = "usd",
-                Description = "Example charge",
                 Source = "tok_visa",
-                Shipping = shippingOptions
             };
 
-            //var customerService = new CustomerService();
-            //customerService.Create(customerOptions);
+
+            // Only assign shipping details to a charge object if delivery is selected
+            if (pizzaOrder.IsDelivery == true)
+            {
+                var shippingOptions = new ChargeShippingOptions
+                {
+                    Name = shippingAddress.FirstName + " " + shippingAddress.LastName,
+                    Address = new AddressOptions()
+                    {
+                        Line1 = shippingAddress.Line1,
+                        City = shippingAddress.City,
+                        State = shippingAddress.State,
+                        PostalCode = shippingAddress.PostalCode.ToString()
+                    }
+                };
+
+                chargeOptions.Shipping = shippingOptions;
+            }
 
             var service = new ChargeService();
-            TempData["OrderInfoName"] = shippingOptions.Address.Line1;
+            TempData["OrderSize"] = pizzaOrder.Size;
+            TempData["OrderQuantity"] = pizzaOrder.Quantity;
+            TempData["OrderToppings"] = pizzaOrder.Toppings;
+            // Divide by 100 for TempData to make the cost more viewable without bringing in any
+            // JavaScript to format for us on the page. We only need the cost to be without a decimal
+            // when communicating with Stripe
+            TempData["OrderCost"] = pizzaOrder.Cost/100;
+            if (pizzaOrder.IsDelivery == true)
+            {
+                TempData["OrderRetrieval"] = "Your order will arrive in 30 minutes or less!";
+            }
+            else
+            {
+                TempData["OrderRetrieval"] = "Your order will be ready for pickup in 15 minutes";
+            }
             Charge charge = service.Create(chargeOptions);
 
             return RedirectToPage("./OrderConfirmation");

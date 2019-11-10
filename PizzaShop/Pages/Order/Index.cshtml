@@ -14,9 +14,9 @@
             <div class="col-sm">
                 <img class="img-fluid" :src="selectedSizeImage" />
                 <br />
-                <h2><strong>Total: {{ calculateTotalCost }}</strong></h2>
-                <p>Selected Size: {{ selectedSize }}</p>
-                <p>Selected Toppings: {{ getToppings }}</p>
+                <h2><strong>Total: {{ calculateTotalCost | currency }}</strong></h2>
+                <p class="h5">Selected Size: {{ selectedSize }}</p>
+                <p class="h5">Selected Toppings: {{ getToppings }}</p>
             </div>
 
             <div class="col-sm">
@@ -26,16 +26,15 @@
                         <h3>Size</h3>
                         <select v-on:change="changeSelectedSize($event)" asp-for="pizzaOrder.Size">
                             <option disabled selected>Select a Size</option>
-                            <option value="small">Small</option>
-                            <option value="medium">Medium</option>
-                            <option value="large">Large</option>
+                            <option value="small">Small ($7.45)</option>
+                            <option value="medium">Medium ($10.45)</option>
+                            <option value="large">Large ($13.45)</option>
                         </select>
                         <br />
                         <span style="color: red;" asp-validation-for="pizzaOrder.Size"></span>
                         <hr />
 
                         <h4>Toppings</h4>
-                        <!--TODO: find a way to for loop toppings without vue; using vue will result in creating an array of objects-->
                         <ul>
                             <li>
                                 <label for="Pepperoni">Pepperoni</label>
@@ -86,24 +85,122 @@
                             <option v-bind:value="3">3</option>
                         </select>
                         <span style="color: red;" asp-validation-for="pizzaOrder.Quantity"></span>
-                        <hr />
                         <br />
-
-                        <p>Is this for delivery?</p>
-                        <select asp-for="pizzaOrder.IsDelivery">
-                            <option selected value="false">No</option>
-                            <option value="true">Yes</option>
-                        </select>
-
+                        <br />
                         <input type="hidden" asp-for="pizzaOrder.Toppings" :value="getToppings" />
                         <input type="hidden" asp-for="pizzaOrder.Cost" :value="calculateTotalCost" />
-                        <br /><br />
                         <button class="btn btn-info" v-on:click="isDisplayingCheckout = true">Continue to Checkout</button>
                     </section>
 
                     <!--Checkout View-->
                     <section v-show="isDisplayingCheckout">
                         <a href="#" v-on:click="isDisplayingCheckout = false"><p>< Back to Pizza Builder</p></a>
+
+                        <div class="form-group">
+                            <label for="deliverySelector">Is this for delivery?</label>
+                            <select class="form-control" v-model="isDelivery" asp-for="pizzaOrder.IsDelivery" id="deliverySelector">
+                                <option selected v-bind:value="false">No</option>
+                                <option v-bind:value="true">Yes</option>
+                            </select>
+                        </div>
+
+                        <div v-if="isDelivery == true">
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" class="form-control" name="firstName" asp-for="shippingAddress.FirstName" required />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" class="form-control" name="lastName" asp-for="shippingAddress.LastName" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="line1">Street</label>
+                                <input type="text" class="form-control" name="line1" asp-for="shippingAddress.Line1" required />
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="city">City</label>
+                                        <input type="text" class="form-control" name="city" asp-for="shippingAddress.City" required />
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="state">State</label>
+                                        <select class="form-control" name="state" asp-for="shippingAddress.State">
+                                            <option value="AL">AL</option>
+                                            <option value="AK">AK</option>
+                                            <option value="AR">AR</option>
+                                            <option value="AZ">AZ</option>
+                                            <option value="CA">CA</option>
+                                            <option value="CO">CO</option>
+                                            <option value="CT">CT</option>
+                                            <option value="DC">DC</option>
+                                            <option value="DE">DE</option>
+                                            <option value="FL">FL</option>
+                                            <option value="GA">GA</option>
+                                            <option value="HI">HI</option>
+                                            <option value="IA">IA</option>
+                                            <option value="ID">ID</option>
+                                            <option value="IL">IL</option>
+                                            <option value="IN">IN</option>
+                                            <option value="KS">KS</option>
+                                            <option value="KY">KY</option>
+                                            <option value="LA">LA</option>
+                                            <option value="MA">MA</option>
+                                            <option value="MD">MD</option>
+                                            <option value="ME">ME</option>
+                                            <option value="MI">MI</option>
+                                            <option value="MN">MN</option>
+                                            <option value="MO">MO</option>
+                                            <option value="MS">MS</option>
+                                            <option value="MT">MT</option>
+                                            <option value="NC">NC</option>
+                                            <option value="NE">NE</option>
+                                            <option value="NH">NH</option>
+                                            <option value="NJ">NJ</option>
+                                            <option value="NM">NM</option>
+                                            <option value="NV">NV</option>
+                                            <option value="NY">NY</option>
+                                            <option value="ND">ND</option>
+                                            <option value="OH">OH</option>
+                                            <option value="OK">OK</option>
+                                            <option value="OR">OR</option>
+                                            <option value="PA">PA</option>
+                                            <option value="RI">RI</option>
+                                            <option value="SC">SC</option>
+                                            <option value="SD">SD</option>
+                                            <option value="TN">TN</option>
+                                            <option value="TX">TX</option>
+                                            <option value="UT">UT</option>
+                                            <option value="VT">VT</option>
+                                            <option value="VA">VA</option>
+                                            <option value="WA">WA</option>
+                                            <option value="WI">WI</option>
+                                            <option value="WV">WV</option>
+                                            <option value="WY">WY</option>
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="postalCode">Postal Code</label>
+                                        <input type="number" class="form-control" name="postalCode" asp-for="shippingAddress.PostalCode" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <label for="card-element">
                             Credit or debit card
                         </label>
