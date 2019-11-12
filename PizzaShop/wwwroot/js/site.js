@@ -1,5 +1,5 @@
 ﻿// Create new instance of Vue
-const vm = new Vue({
+let vm = new Vue({
     el: '#app',
     data: {
         isDisplayingCheckout: false,

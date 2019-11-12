@@ -4,7 +4,15 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Troy's Pizza Shop</h1>
-    
+<div class="card card-image" id="pizzaShopBanner" style="background-image: url(images/pizzaBanner.jpg);height: 600px;">
+    <div class="text-white text-center rgba-stylish-strong py-5 px-4">
+        <div class="py-5">
+            <h1 class="card-title display-3 my-4 py-2">Welcome to Troy's Pizza Shop</h1>
+            <p class="h4 mb-4 pb-2 px-md-5 mx-md-5">
+            </p>
+            <a asp-area="" asp-page="./Order/Index" class="btn btn-light">
+                Build a pizza!
+            </a>
+        </div>
+    </div>
 </div>
