@@ -61,6 +61,7 @@ namespace PizzaShop
                 app.UseHsts();
             }
 
+            // not a valid key, just an example. this should be inserted as an environment variable or through a configuration option via the hosting provider
             StripeConfiguration.ApiKey = "sk_test_pZ87WSZ0hqjVmZldAZk9E7yR009yaLc9cm";
 
             app.UseHttpsRedirection();
